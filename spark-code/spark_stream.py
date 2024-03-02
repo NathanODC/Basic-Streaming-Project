@@ -5,6 +5,7 @@ from pyspark.sql import SparkSession
 from pyspark.sql.functions import from_json, col
 from pyspark.sql.types import StructType, StructField, StringType
 
+KAFKA_IP = os.getenv("KAFKA_CLUSTER_IP")
 KAFKA_USERNAME = os.getenv("KAFKA_CLUSTER_USER")
 KAFKA_PASSWORD = os.getenv("KAFKA_CLUSTER_PASS")
 
@@ -57,7 +58,7 @@ def connect_to_kafka(spark_conn: object) -> object:
             spark_conn.readStream.format("kafka")
             .option(
                 "kafka.bootstrap.servers",
-                "welcomed-puma-9297-us1-kafka.upstash.io:9092",
+                KAFKA_IP,
             )
             .option("kafka.sasl.mechanism", "SCRAM-SHA-256")
             .option("kafka.security.protocol", "SASL_SSL")

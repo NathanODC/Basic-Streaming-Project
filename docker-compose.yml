@@ -318,9 +318,10 @@ services:
 
 
   cassandra_db:
-    image: cassandra:latest
+    image: cassandra-extention:latest
     container_name: cassandra
     hostname: cassandra
+    entrypoint: /cas-config/cassandra-entrypoint.sh
     ports:
       - "9042:9042"
     environment:
@@ -330,7 +331,6 @@ services:
       - CASSANDRA_PASSWORD=cassandra
     networks:
       - confluent
-
 
 networks:
   confluent:

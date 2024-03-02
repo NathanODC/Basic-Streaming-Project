@@ -13,6 +13,7 @@ from kafka import KafkaProducer
 
 default_args = {"owner": "NathanODC", "start_date": datetime(2023, 9, 3, 10, 00)}
 
+KAFKA_IP = os.getenv("KAFKA_CLUSTER_IP")
 KAFKA_USERNAME = os.getenv("KAFKA_CLUSTER_USER")
 KAFKA_PASSWORD = os.getenv("KAFKA_CLUSTER_PASS")
 
@@ -72,7 +73,7 @@ def stream_data(ti) -> None:
     """
 
     producer = KafkaProducer(
-        bootstrap_servers="welcomed-puma-9297-us1-kafka.upstash.io:9092",
+        bootstrap_servers=KAFKA_IP,
         sasl_mechanism="SCRAM-SHA-256",
         security_protocol="SASL_SSL",
         sasl_plain_username=KAFKA_USERNAME,
