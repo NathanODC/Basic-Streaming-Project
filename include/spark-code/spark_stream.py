@@ -60,7 +60,7 @@ def connect_to_kafka(spark_conn: object) -> object:
                 "kafka.bootstrap.servers",
                 KAFKA_IP,
             )
-            .option("kafka.sasl.mechanism", "SCRAM-SHA-256")
+            .option("kafka.sasl.mechanism", "PLAIN")
             .option("kafka.security.protocol", "SASL_SSL")
             .option(
                 "kafka.sasl.jaas.config",
@@ -68,6 +68,9 @@ def connect_to_kafka(spark_conn: object) -> object:
             )
             .option("startingOffsets", "earliest")
             .option("subscribe", "users_created")
+            .option(
+                "failOnDataLoss", "false"
+            )  #! Seeing that this is a test project case
             .load()
         )
         logging.info("kafka dataframe created successfully")
