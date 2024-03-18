@@ -27,7 +27,7 @@ Before running the pipeline, ensure you have the following installed:
 
 ## Important notes
 
-I used upstash kafka cluster service, so it is basically go to the website https://console.upstash.com and create your own cluster. Then take your cluster endpoint ip, kafka cluster user, password and store all those infos in a .env file. This file serves as environment variables for each container.
+I used astronomer on my local environment to test the airflow stuff and confluent services to hold my kafka cluster. Take your cluster endpoint ip, kafka cluster user and password and store all those infos on .env file. This file serves as environment variables for each container.
 
 ## Roadmap
 
