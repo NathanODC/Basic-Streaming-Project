@@ -97,7 +97,7 @@ def gen_api_data_2_kafka() -> None:
                 )
 
             except Exception as e:
-                logging.error(f"An error occurred: {e}")
+                logging.error("An error occurred: %s", e)
                 continue
 
     stream_to_kafka()
